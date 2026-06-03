@@ -2,12 +2,8 @@ import {useState} from "react"
 import logo from "./img/pokemon-logo.png"
 import "./header.css"
 
-
-
 function Header () {
     const [search, setSearch] = useState('');
-    
-
    
     return (
         <header className = "header container  p-2">
@@ -28,4 +24,4 @@ function Header () {
     )
 }
 
-export default Header;
+export  {Header};
