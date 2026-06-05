@@ -1,18 +1,18 @@
-.header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    max-width: 100px;
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 100px;
 }
 
-.logo{
-    max-height: 100px;
+.logo {
+  max-height: 100px;
 }
 
-.search-pokemon{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    gap: 10px;
+.search-pokemon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
 }

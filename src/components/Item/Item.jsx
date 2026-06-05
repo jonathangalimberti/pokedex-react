@@ -1,28 +1,27 @@
-import "./item.css"
-import react from "react";
+import pokeball from "../img/pokeball.png";
+import "./item.css";
+import { Loading } from "../Loading/Loading";
+import { Card } from "../Card/Card";
+import { Carrousel } from "../Carrousel/Carrousel";
+import { Types } from "../Types/Types";
 
-function Item ({pokemon}) {
-  
+function Item({ pokemon, page }) {
   if (!pokemon.length) {
-    return <p>Loading...</p>;
+    return <Loading page={page} pokemon={pokemon} pokeball={pokeball} />;
   }
 
   return (
     <>
-      {pokemon.map((poke) => (
-        <div key={poke.id} className="container">
-          <img
-            src={poke.sprites.front_default}
-            alt={poke.name}
-          />
-          <p>{poke.name}</p>
-          <p>{poke.id}</p>
-        </div>
-      ))}
+      <div
+        key={page}
+        className="container d-flex flex-wrap justify-content-center gap-2"
+      >
+        {pokemon.map((poke) => (
+          <Card key={poke.id} poke={poke} />
+        ))}
+      </div>
     </>
   );
-  
-   
 }
 
-export {Item}
+export { Item };
