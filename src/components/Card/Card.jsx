@@ -10,7 +10,7 @@ function Card({ poke }) {
         name={poke.name}
       />
 
-      <div className="card-body">
+      <div className="card-body text-capitalize">
         <p>{poke.name}</p>
         <Types types={poke.types} />
       </div>

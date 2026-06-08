@@ -1,4 +1,5 @@
 import react from "react";
+import { useLocalStorage } from "./LocalStorage";
 
 //creacion de contexto para evitar prop drilling
 const Context = react.createContext();
@@ -9,11 +10,12 @@ function PokemonProvider({ children }) {
   const url = "https://pokeapi.co/api/v2/";
   const [page, setPage] = react.useState(1);
   const [pokemonDetail, setPokemonDetail] = react.useState([]);
-  let pokemonNames = [];
+  const [pokemonNames, setPokemonNames] = react.useState([]);
   const [fullPokemonList, setFullPokemonList] = react.useState([]);
 
   //useEffect para controlar la carga de las funciones asincronas
   react.useEffect(() => {
+    GetPokemonNames()
     fetchPokemon();
   }, []);
 
@@ -25,17 +27,17 @@ function PokemonProvider({ children }) {
   async function GetPokemonNames() {
     const response = await fetch(`${url}pokemon?limit=100000`);
     const data = await response.json();
-    pokemonNames = data.results;
-    console.log(pokemonNames);
-    data.results.forEach((poke) => {
-      fetch(poke.url)
-        .then((response) => response.json())
-        .then((data) => {
-          if (!fullPokemonList.some((p) => p.id === data.id)) {
-            setFullPokemonList((prev) => [...prev, data]);
-          }
-        });
-    });
+    setPokemonNames(data.results);
+    
+    // data.results.forEach((poke) => {
+    //   fetch(poke.url)
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       if (!fullPokemonList.some((p) => p.id === data.id)) {
+    //         setFullPokemonList((prev) => [...prev, data]);
+    //       }
+    //     });
+    // }
   }
 
   async function fetchPokemon() {
@@ -66,6 +68,12 @@ function PokemonProvider({ children }) {
     }
   }
 
+  function searchedOptions(pokes){
+    if(pokes){
+      
+    } 
+  }
+
   //renderizado y props del provider
   return (
     <Context.Provider
@@ -74,6 +82,7 @@ function PokemonProvider({ children }) {
         nextPage,
         previousPage,
         pokemonDetail,
+        pokemonNames,
       }}
     >
       {children}

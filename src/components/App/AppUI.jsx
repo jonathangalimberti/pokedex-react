@@ -5,11 +5,12 @@ import { Pagination } from "../Pagination/Pagination";
 import { Item } from "../Item/Item";
 
 function AppUI() {
-  const { nextPage, previousPage, pokemonDetail } = react.useContext(Context);
+  const { nextPage, previousPage, pokemonDetail, pokemonNames } = react.useContext(Context);
 
   return (
     <react.Fragment>
-      <Header />
+      <Header pokemonDetail = {pokemonDetail}
+      pokemonNames={pokemonNames}/>
       <Pagination
         onNextPage={nextPage}
         onPreviousPage={previousPage}

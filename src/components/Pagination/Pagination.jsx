@@ -1,7 +1,7 @@
 function Pagination({ onNextPage, onPreviousPage }) {
   return (
     <nav aria-label="Page navigation example">
-      <ul className="pagination justify-content-center">
+      <ul className="pagination justify-content-center my-4">
         <li className="page-item" key="previous" onClick={onPreviousPage}>
           <button className="page-link">Previous</button>
         </li>
