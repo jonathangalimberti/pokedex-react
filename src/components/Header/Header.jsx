@@ -1,10 +1,8 @@
-import { useState } from "react";
 import logo from "../img/pokemon-logo.png";
 import "./header.css";
 import {Search} from "../Search/Search" 
-import {setSearchedPokemons} from "../Search/Search"
 
-function Header({pokemonDetail, pokemonNames, setSearchedPokemons}) {
+function Header({pokemonDetail, pokemonNames}) {
   // const [search, setSearch] = useState("");
 
   return (

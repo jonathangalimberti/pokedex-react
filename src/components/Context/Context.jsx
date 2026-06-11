@@ -11,7 +11,7 @@ function PokemonProvider({ children }) {
   const [page, setPage] = react.useState(1);
   const [pokemonDetail, setPokemonDetail] = react.useState([]);
   const [pokemonNames, setPokemonNames] = react.useState([]);
-  const [fullPokemonList, setFullPokemonList] = react.useState([]);
+  // const [fullPokemonList, setFullPokemonList] = react.useState([]);
 
   //useEffect para controlar la carga de las funciones asincronas
   react.useEffect(() => {
@@ -20,7 +20,6 @@ function PokemonProvider({ children }) {
   }, []);
 
   react.useEffect(() => {
-    console.log(fullPokemonList);
   }, [page]);
 
   //Funciones asincronas para llamadas a la API
@@ -68,11 +67,7 @@ function PokemonProvider({ children }) {
     }
   }
 
-  function searchedOptions(pokes){
-    if(pokes){
-      
-    } 
-  }
+  
 
   //renderizado y props del provider
   return (

@@ -1,70 +1,155 @@
-# Getting Started with Create React App
+# Pokédex React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern Pokédex application built with React and PokéAPI.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+This project was developed as part of my Frontend Developer learning journey, focusing on React fundamentals, API integration, state management, and component-based architecture.
 
-### `npm start`
+The application allows users to browse Pokémon data, navigate through pages, search Pokémon by name, and explore detailed information retrieved from the PokéAPI.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+* Pokémon listing with dynamic rendering
+* API integration using Fetch API
+* Global state management with Context API
+* Client-side pagination
+* Real-time search with autocomplete suggestions
+* Responsive interface
+* Loading states
+* Component-based architecture
+* Favorites system (Work in Progress)
+* LocalStorage persistence (Work in Progress)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Technologies Used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Frontend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* React
+* JavaScript (ES6+)
+* HTML5
+* CSS3
+* Bootstrap
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Data Management
 
-### `npm run eject`
+* Context API
+* React Hooks
+* Fetch API
+* LocalStorage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Development Tools
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Git
+* GitHub
+* VS Code
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Project Structure
 
-## Learn More
+```bash
+src/
+│
+├── components/
+│   ├── Button/
+│   ├── Card/
+│   ├── Carrousel/
+│   ├── Context/
+│   ├── Header/
+│   ├── Item/
+│   ├── Loading/
+│   ├── Search/
+│   └── Types/
+│
+├── App.jsx
+└── index.js
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Learning Objectives
 
-### Code Splitting
+This project was created to practice:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* React component architecture
+* Props and state management
+* Context API
+* Asynchronous programming
+* API consumption
+* Conditional rendering
+* Pagination logic
+* Search and filtering techniques
+* Local data persistence
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Future Improvements
 
-### Making a Progressive Web App
+* Favorites management
+* LocalStorage persistence for favorites
+* Pokémon detail modal/page
+* Advanced filtering by type
+* TypeScript migration
+* Performance optimizations
+* Unit testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Clone the repository:
 
-### Deployment
+```bash
+git clone https://github.com/jonathangalimberti/pokedex-react.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Navigate to the project folder:
 
-### `npm run build` fails to minify
+```bash
+cd pokedex-react
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm start
+```
+
+---
+
+## API
+
+This project uses:
+
+PokéAPI
+
+https://pokeapi.co/
+
+---
+
+## Author
+
+Jonathan Galimberti
+
+LinkedIn:
+https://www.linkedin.com/in/jonathan-galimberti-developer/
+
+GitHub:
+https://github.com/jonathangalimberti
+
+---
+
+## Status
+
+Currently under active development.
