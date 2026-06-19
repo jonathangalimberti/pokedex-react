@@ -1,4 +1,4 @@
-function Loading({ page, pokeball, pokemon }) {
+function Loading({ page, pokeball }) {
   return (
     <div
       key={page}

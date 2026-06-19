@@ -9,7 +9,6 @@ function Card({ poke }) {
         back={poke.sprites.back_default}
         name={poke.name}
       />
-
       <div className="card-body text-capitalize">
         <p>{poke.name}</p>
         <Types types={poke.types} />

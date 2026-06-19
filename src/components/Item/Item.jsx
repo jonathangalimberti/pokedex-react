@@ -4,7 +4,7 @@ import { Loading } from "../Loading/Loading";
 import { Card } from "../Card/Card";
 
 function Item({ pokemon, page }) {
-  if (!pokemon.length) {
+  if (!pokemon) {
     return <Loading key={page} pokemon={pokemon} pokeball={pokeball} />;
   }
 

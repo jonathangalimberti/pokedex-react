@@ -5,17 +5,27 @@ import { Pagination } from "../Pagination/Pagination";
 import { Item } from "../Item/Item";
 
 function AppUI() {
-  const { nextPage, previousPage, pokemonDetail, pokemonNames } = react.useContext(Context);
+  const { nextPage, previousPage, pokemonNames, page, cache, otherPage} = react.useContext(Context);
 
   return (
     <react.Fragment>
-      <Header pokemonDetail = {pokemonDetail}
+      <Header 
       pokemonNames={pokemonNames}/>
       <Pagination
+       otherPage={otherPage}
         onNextPage={nextPage}
         onPreviousPage={previousPage}
-      ></Pagination>
-      <Item key="items" pokemon={pokemonDetail}></Item>
+        totalPages = {Math.ceil(pokemonNames.length/20)}
+        page = {page}
+      />
+      <Item key="items" pokemon={cache[page]}></Item>
+      <Pagination
+        otherPage={otherPage}
+        onNextPage={nextPage}
+        onPreviousPage={previousPage}
+        totalPages = {Math.ceil(pokemonNames.length/20)}
+        page = {page}
+      />
     </react.Fragment>
   );
 }

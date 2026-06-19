@@ -1,4 +1,4 @@
-import react from "react";
+﻿import react from "react";
 import { useLocalStorage } from "./LocalStorage";
 
 //creacion de contexto para evitar prop drilling
@@ -9,56 +9,49 @@ function PokemonProvider({ children }) {
   //constantes y estados con sus actualizadores
   const url = "https://pokeapi.co/api/v2/";
   const [page, setPage] = react.useState(1);
-  const [pokemonDetail, setPokemonDetail] = react.useState([]);
+  const [cache, setCache] = react.useState({});;
   const [pokemonNames, setPokemonNames] = react.useState([]);
-  // const [fullPokemonList, setFullPokemonList] = react.useState([]);
 
   //useEffect para controlar la carga de las funciones asincronas
   react.useEffect(() => {
     GetPokemonNames()
-    fetchPokemon();
   }, []);
 
   react.useEffect(() => {
+    console.log(cache);
+  }, [cache]);
+  
+  react.useEffect(() => {
+    if(!cache[page]){
+      fetchPokemon(page);
+      fetchPokemon(page+1);
+    }else{
+      fetchPokemon(page+1)
+    }
   }, [page]);
-
+  
   //Funciones asincronas para llamadas a la API
   async function GetPokemonNames() {
     const response = await fetch(`${url}pokemon?limit=100000`);
     const data = await response.json();
     setPokemonNames(data.results);
-    
-    // data.results.forEach((poke) => {
-    //   fetch(poke.url)
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       if (!fullPokemonList.some((p) => p.id === data.id)) {
-    //         setFullPokemonList((prev) => [...prev, data]);
-    //       }
-    //     });
-    // }
   }
-
-  async function fetchPokemon() {
+  
+  async function fetchPokemon(pagination) {
     const response = await fetch(
-      `${url}pokemon?offset=${(page - 1) * 20}&limit=20`,
+      `${url}pokemon?offset=${(pagination - 1 ) * 20}&limit=20`,
     );
     const data = await response.json();
-    setPokemonDetail([]);
-    data.results.forEach((poke) => {
-      fetch(poke.url)
-        .then((response) => response.json())
-        .then((data) => {
-          if (!pokemonDetail.some((p) => p.id === data.id)) {
-            setPokemonDetail((prev) => [...prev, data]);
-          }
-        });
-    });
+    const pokemonData = await Promise.all(data.results.map((poke)=>(fetch(poke.url)
+    .then((response) => response.json()))))
+    setCache((prev)=>({...prev,[pagination]:pokemonData})) 
   }
 
   //funciones ejecutables
   function nextPage() {
-    setPage(page + 1);
+    if(page !== Math.ceil(pokemonNames.length/20)){
+      setPage(page + 1);
+    }
   }
 
   function previousPage() {
@@ -67,7 +60,9 @@ function PokemonProvider({ children }) {
     }
   }
 
-  
+  function otherPage(pagination){
+    setPage(pagination)
+  }
 
   //renderizado y props del provider
   return (
@@ -76,8 +71,9 @@ function PokemonProvider({ children }) {
         page,
         nextPage,
         previousPage,
-        pokemonDetail,
         pokemonNames,
+        cache,
+        otherPage
       }}
     >
       {children}
@@ -87,3 +83,4 @@ function PokemonProvider({ children }) {
 
 //exportaciones nombradas
 export { PokemonProvider, Context };
+

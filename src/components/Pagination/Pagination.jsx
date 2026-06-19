@@ -1,34 +1,23 @@
-function Pagination({ onNextPage, onPreviousPage }) {
+import { PaginationItem } from "../PaginationItem/PaginationItem";
+
+function Pagination({ onNextPage, onPreviousPage, page, totalPages, otherPage}) {
+
   return (
     <nav aria-label="Page navigation example">
       <ul className="pagination justify-content-center my-4">
         <li className="page-item" key="previous" onClick={onPreviousPage}>
-          <button className="page-link">Previous</button>
+          <button className={`page-link ${page === 1 ? "disabled" : ""}`}>Previous</button>
         </li>
-        <li className="page-item" key={1}>
-          <button className="page-link" href="#">
-            1
-          </button>
-        </li>
-        <li className="page-item" key={2}>
-          <button className="page-link" href="#">
-            2
-          </button>
-        </li>
-        <li className="page-item" key={3}>
-          <button className="page-link" href="#">
-            3
-          </button>
-        </li>
+        <PaginationItem 
+        otherPage = {otherPage}
+        page={page}
+        totalPages={totalPages}/>
         <li className="page-item" key="next" onClick={onNextPage}>
-          <button className="page-link">Next</button>
+          <button className={`page-link ${page === totalPages ? "disabled" : ""}`}>Next</button>
         </li>
       </ul>
     </nav>
-    // <div>
-    //     <button type="button" onClick={onPreviousPage}> previous Page</button>
-    //     <button type="button" onClick={onNextPage}> next Page</button>
-    // </div>
+   
   );
 }
 
